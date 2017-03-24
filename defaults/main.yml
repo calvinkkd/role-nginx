@@ -1,0 +1,44 @@
+
+nginx_user: www-data
+nginx_worker_processes: 4
+nginx_worker_connections: 768
+nginx_pid_filename: /run/nginx.pid
+
+nginx_http_params:
+  sendfile: "on"
+  tcp_nopush: "on"
+  tcp_nodelay: "on"
+  keepalive_timeout: 65
+  gzip: "on"
+  gzip_disable: "msie6"
+
+nginx_log_dirname: /var/log/nginx
+nginx_access_log_filename: access.log
+nginx_error_log_filename: error.log
+
+nginx_separate_logs_per_site: no
+nginx_default_site_enabled: yes
+nginx_default_site_root: /usr/share/nginx/html
+
+nginx_sites: []
+# - server:
+#    listen: 8080
+#    server_name: localhost
+#    root: "/tmp/site1"
+#    location1: {name: /, try_files: "$uri $uri/ /index.html"}
+#    location2: {name: /images/, try_files: "$uri $uri/ /index.html"}
+#  file_name: foo
+# - server:
+#    listen: 9090
+#    server_name: ansible
+#    root: "/tmp/site2"
+#    location1: {name: /, try_files: "$uri $uri/ /index.html"}
+#    location2: {name: /images/, try_files: "$uri $uri/ /index.html"}
+#  file_name: bar
+#  upstreams:
+#    - {name: "foo2", directives: ["server unix:///tmp/foo.socket"]}
+
+nginx_proxy_next_upstream:
+nginx_upstreams: []
+#- {name: "foo", directives: ["server unix:///tmp/foo.socket"]}
+#- {name: "bar", directives: ["server unix:///tmp/bar.socket"]}
